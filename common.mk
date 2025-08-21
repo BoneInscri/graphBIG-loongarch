@@ -25,10 +25,11 @@ reset_generated_dir:
 
 run: ${TARGET} reset_generated_dir
 	@if [ -n "${TARGET}" ]; then \
-          echo "Running ${TARGET}, output in ${OUTPUT_LOG}"; \
-          ./${TARGET} ${RUN_ARGS} ${PERF_ARGS} > ${OUTPUT_LOG} 2>&1; \
+		file ${TARGET}; \
+		mkdir -p ../output && \
+		cp ${TARGET} ../output/; \
 	fi
-
+	
 verify: 
 	@echo "VERIFY-run [${TARGET}]"
 	@-make clean;
